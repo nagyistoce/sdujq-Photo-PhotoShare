@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    >
+<ImageView
+    android:id="@+id/bg1"
+    android:layout_width="fill_parent" 
+    android:layout_height="60dp" 
+    android:background="@drawable/bg1"
+    />
+<Button
+    android:id="@+id/title"
+    android:layout_width="63dp"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:layout_margin="8dp"
+    android:background="@drawable/title_login"
+    />
+<Button
+    android:id="@+id/exit"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_margin="8dp"
+    android:background="@drawable/exit"
+    />
+  <LinearLayout 
+    android:id="@+id/buttons"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/bg2"
+    >
+  </LinearLayout>
+  <android.support.v4.view.ViewPager
+	android:id="@+id/guidePages"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_above="@id/buttons"
+    android:layout_below="@id/bg1"
+  />
+</RelativeLayout>

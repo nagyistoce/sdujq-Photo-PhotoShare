@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+<ImageView 
+  android:layout_width="fill_parent"
+  android:layout_height="45dp"
+  android:layout_marginLeft="25dp"
+  android:layout_marginRight="25dp"
+  android:layout_marginTop="50dp"
+  android:background="@drawable/username"
+  />
+<EditText
+  android:id="@+id/username"
+  android:layout_width="fill_parent"
+  android:layout_height="45dp"
+  android:layout_marginLeft="100dp"
+  android:layout_marginRight="25dp"
+  android:layout_marginTop="55dp"
+  android:background="@drawable/none"
+  />
+ <ImageView 
+  android:layout_width="fill_parent"
+  android:layout_height="45dp"
+  android:layout_marginLeft="25dp"
+  android:layout_marginRight="25dp"
+  android:layout_below="@id/username"
+  android:layout_marginTop="13dp"
+  android:background="@drawable/password"
+  />
+  <EditText
+  android:id="@+id/password" 
+  android:layout_width="fill_parent"
+  android:layout_height="45dp"
+  android:layout_marginLeft="100dp"
+  android:layout_marginRight="25dp"
+  android:layout_below="@id/username"
+  android:layout_marginTop="15dp"
+  android:background="@drawable/none"
+  />
+</RelativeLayout>
