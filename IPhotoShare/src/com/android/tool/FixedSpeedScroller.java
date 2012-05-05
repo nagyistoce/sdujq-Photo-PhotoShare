@@ -1,11 +1,11 @@
-package com.android.tool;
+﻿package com.android.tool;
 
 import android.content.Context;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 /**
- * 设置view滑动速率（待定）
+ * 设置view滑动速率
  * @author ls
  *
  */
