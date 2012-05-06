@@ -1,5 +1,9 @@
 package org.sdu.task;
-
+/**
+ * 注册相关
+ * @author shadow
+ *
+ */
 public interface Reg {
 	/**
 	 * 注册新用户

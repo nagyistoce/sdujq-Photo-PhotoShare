@@ -1,5 +1,9 @@
 package org.sdu.task;
-
+/**
+ * µÇÂ½
+ * @author shadow
+ *
+ */
 public interface Login {
 
 	/**
