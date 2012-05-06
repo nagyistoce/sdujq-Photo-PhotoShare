@@ -18,7 +18,7 @@ public class User implements java.io.Serializable {
 	@Column(name="email")
 	private String email;
 	@Column(name="head")
-	private String head;
+	private byte[] head;
 	
 	public Integer getId() {
 		return id;
@@ -44,10 +44,10 @@ public class User implements java.io.Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getHead() {
+	public byte[] getHead() {
 		return head;
 	}
-	public void setHead(String head) {
+	public void setHead(byte[] head) {
 		this.head = head;
 	}
 
