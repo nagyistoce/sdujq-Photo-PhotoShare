@@ -15,7 +15,6 @@ import com.tgb.lk.ahibernate.util.MyDBHelper;
 public class DBHelper extends MyDBHelper {
 	private static final String DBNAME = "p.db";
 	private static final int DBVERSION = 1;
-
 	private static final Class<?>[] classes = { Argument.class,
 			Collection.class, Dynamic.class, DynamicType.class, Friend.class,
 			Photo.class, User.class };
