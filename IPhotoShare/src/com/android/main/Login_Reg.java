@@ -1,26 +1,30 @@
 package com.android.main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
+import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.android.item.Login;
+import com.android.item.Register;
+
 public class Login_Reg extends Activity{
-	private ViewPager viewPager;
-	private ArrayList<View> pageViews;
+	public static  ViewPager viewPager;
 	private Button title;
-	//private ViewGroup login;
-	//private ViewGroup main;
+	private LocalActivityManager manager = null;
+	private List<View> listViews;
+	private Button exit;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,13 +32,15 @@ public class Login_Reg extends Activity{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.login_reg);
 		
-		LayoutInflater inflater = getLayoutInflater();
-		pageViews = new ArrayList<View>();
-		pageViews.add(inflater.inflate(R.layout.item_login, null));
-		pageViews.add(inflater.inflate(R.layout.item_reg, null));
+		manager = new LocalActivityManager(this, true);
+		manager.dispatchCreate(savedInstanceState);
 		
-	//	login = (ViewGroup)inflater.inflate(R.layout.item_login, null);  
-	//	main = (ViewGroup)inflater.inflate(R.layout.login_reg, null);  
+		listViews = new ArrayList<View>();
+		Intent intent = new Intent(this, Login.class);
+		listViews.add(getView("Login", intent));
+		Intent intent2 = new Intent(this, Register.class);
+		listViews.add(getView("Attention", intent2));
+		
 
 		viewPager = (ViewPager) findViewById(R.id.guidePages);
 		title = (Button)findViewById(R.id.title);
@@ -43,31 +49,29 @@ public class Login_Reg extends Activity{
 		viewPager.setAdapter(new GuidePageAdapter());
 		viewPager.setOnPageChangeListener(new GuidePageChangeListener());   
 		
-		Button login_b = (Button)findViewById(R.id.title);
-		Button exit = (Button)findViewById(R.id.exit);
+		exit = (Button)findViewById(R.id.exit);
+		exit.setEnabled(false);
+		exit.setVisibility(View.GONE);
+//		exit.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				Login_Reg.this.finish();
+//			}
+//		});
 		
-//		EditText login_e = (EditText)login.findViewById(R.id.username);
-//		EditText password = (EditText)login.findViewById(R.id.password);
-		//login_e.clearFocus();
-		//password.clearFocus();
-		login_b.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent =new Intent();
-				intent.setClass(Login_Reg.this, Home.class);
-				Login_Reg.this.startActivity(intent);
-				Login_Reg.this.finish();
-			}
-		});
-		
-		exit.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Login_Reg.this.finish();
-			}
-		});
+//		//实现屏幕滑动的速率控制
+//		try {
+//			Field mScroller;
+//			mScroller = ViewPager.class.getDeclaredField("mScroller");
+//			mScroller.setAccessible(true);
+//			FixedSpeedScroller scroller = new FixedSpeedScroller(viewPager
+//					.getContext());
+//			mScroller.set(viewPager, scroller);
+//		} catch (NoSuchFieldException e) {
+//		} catch (IllegalArgumentException e) {
+//		} catch (IllegalAccessException e) {
+//		}
 		
 	}
 
@@ -75,7 +79,7 @@ public class Login_Reg extends Activity{
 
 		@Override
 		public int getCount() {
-			return pageViews.size();
+			return listViews.size();
 		}
 
 		@Override
@@ -90,13 +94,13 @@ public class Login_Reg extends Activity{
 
 		@Override
 		public void destroyItem(View arg0, int arg1, Object arg2) {
-			((ViewPager) arg0).removeView(pageViews.get(arg1));
+			((ViewPager) arg0).removeView(listViews.get(arg1));
 		}
 
 		@Override
 		public Object instantiateItem(View arg0, int arg1) {
-			((ViewPager) arg0).addView(pageViews.get(arg1));
-			return pageViews.get(arg1);
+			((ViewPager) arg0).addView(listViews.get(arg1));
+			return listViews.get(arg1);
 		}
 
 		@Override
@@ -136,9 +140,24 @@ public class Login_Reg extends Activity{
 		public void onPageSelected(int arg0) {
 			if (arg0 == 0) {
 				title.setBackgroundResource(R.drawable.title_login);
+				title.setEnabled(false);
+				exit.setVisibility(View.GONE);
+//				exit.setBackgroundResource(R.drawable.exit);
+//				exit.setEnabled(true);
 				
 			} else if(arg0==1){
-				title.setBackgroundResource(R.drawable.title_reg);
+				title.setBackgroundResource(R.drawable.back);
+				title.setEnabled(true);
+				title.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						viewPager.setCurrentItem(0);
+					}
+				});
+				exit.setVisibility(View.VISIBLE);
+				exit.setBackgroundResource(R.drawable.title_reg);
+				
 			}
 		}
 	}
@@ -154,6 +173,19 @@ public class Login_Reg extends Activity{
 			viewPager.setCurrentItem(this.item);
 		}
 		
+	}
+	
+	/***
+	 * 获取相应页面的activity
+	 * 
+	 * @param id
+	 *            对应Id号
+	 * @param intent
+	 *            Intent对象
+	 * @return View
+	 */
+	private View getView(String id, Intent intent) {
+		return manager.startActivity(id, intent).getDecorView();
 	}
 
 

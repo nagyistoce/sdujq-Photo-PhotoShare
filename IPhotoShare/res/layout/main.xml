@@ -21,12 +21,13 @@
     />
 <Button
     android:id="@+id/exit"
-    android:layout_width="50dp"
+    android:layout_width="63dp"
     android:layout_height="50dp"
     android:layout_alignParentTop="true"
     android:layout_alignParentRight="true"
     android:layout_margin="8dp"
     android:background="@drawable/exit"
+    android:visibility="gone"
     />
 <LinearLayout 
     android:id="@+id/buttons"
@@ -53,7 +54,7 @@
    android:id="@+id/collect"
    android:layout_height="fill_parent"
    android:layout_width="wrap_content"
-   android:background="@drawable/collect"
+   android:background="@drawable/map"
    android:layout_weight="1"
    ></Button> 
    <Button
@@ -77,7 +78,7 @@
     android:layout_alignParentBottom="true"
     >
    <ImageView
-   android:id="@+id/cycle_1"
+   android:id="@+id/cycle"
    android:layout_height="fill_parent"
    android:layout_width="wrap_content"
    android:background="@drawable/cycle_1"

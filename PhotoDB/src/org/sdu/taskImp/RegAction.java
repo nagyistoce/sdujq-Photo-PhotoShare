@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.sdu.db.dao.UserDao;
 import org.sdu.db.pojo.User;
-import org.sdu.task.RegInterface;
+import org.sdu.task.IReg;
 
 import android.content.Context;
 
-public class RegAction implements RegInterface{
+public class RegAction implements IReg{
 	private String info="´íÎó";
 	private Context context;
 	public RegAction(Context context){

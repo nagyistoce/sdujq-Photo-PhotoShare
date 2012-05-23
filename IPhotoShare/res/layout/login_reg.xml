@@ -21,7 +21,7 @@
     />
 <Button
     android:id="@+id/exit"
-    android:layout_width="50dp"
+    android:layout_width="63dp"
     android:layout_height="50dp"
     android:layout_alignParentTop="true"
     android:layout_alignParentRight="true"

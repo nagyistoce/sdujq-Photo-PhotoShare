@@ -5,7 +5,7 @@
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="8" />
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    <application android:icon="@drawable/logo" android:label="@string/app_name">
         <activity android:name=".Login_Reg"
                   android:label="@string/app_name">
             <intent-filter>
@@ -13,6 +13,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
     <activity android:name=".Home"></activity>
+    <activity android:name=".Handle_photo"></activity>
+    
+    <activity android:name="com.android.item.Attention"></activity>
+    <activity android:name="com.android.item.Map"></activity>
+    <activity android:name="com.android.item.Person"></activity>
+    <activity android:name="com.android.item.Main_item"></activity>
+    <activity android:name="com.android.item.Photo"></activity>
+    <activity android:name="com.android.item.Login"></activity>
+    <activity android:name="com.android.item.Register"></activity>
+    
+    <activity android:name="com.android.item.activity.Collection"></activity>
+    <activity android:name="com.android.item.activity.Collect_OneAlbum"></activity>
+    <activity android:name="com.android.item.activity.Collect_img"></activity>
+    <activity android:name="com.android.item.activity.Picture"></activity>
+    <activity android:name="com.android.item.activity.MyUpload"></activity>
+    <activity android:name="com.android.item.activity.Upload"></activity>
+    <activity android:name="com.android.item.activity.SetSns"></activity>
+     <activity android:name="com.android.item.activity.About"></activity>
+    
+    
+    
+    
     </application>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
 </manifest>

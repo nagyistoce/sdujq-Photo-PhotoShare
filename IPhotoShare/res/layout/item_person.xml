@@ -14,15 +14,42 @@
     android:id="@+id/myname"
     android:layout_toRightOf="@id/myphoto"
     android:layout_width="fill_parent"
-    android:layout_height="45dp"
+    android:layout_height="40dp"
     android:layout_marginRight="20dp"
     android:layout_marginTop="25dp"
-    android:background="@drawable/myname"/> 
-  <Button
-    android:id="@+id/myset"
+    android:background="@drawable/username"/>
+    <Button
+    android:id="@+id/mycollect"
     android:layout_below="@id/myphoto"
     android:layout_width="fill_parent"
-    android:layout_height="45dp"
+    android:layout_height="40dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/mycollect"/>
+    <Button
+    android:id="@+id/myupload"
+    android:layout_below="@id/mycollect"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="13dp"
+    android:background="@drawable/myupload"/>
+    <Button
+    android:id="@+id/mysns"
+    android:layout_below="@id/myupload"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="13dp"
+    android:background="@drawable/mysns"/> 
+  <Button
+    android:id="@+id/myset"
+    android:layout_below="@id/mysns"
+    android:layout_width="fill_parent"
+    android:layout_height="40dp"
     android:layout_marginRight="25dp"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="13dp"
@@ -31,7 +58,7 @@
     android:id="@+id/about"
     android:layout_below="@id/myset"
     android:layout_width="fill_parent"
-    android:layout_height="45dp"
+    android:layout_height="40dp"
     android:layout_marginRight="25dp"
     android:layout_marginLeft="25dp"
     android:layout_marginTop="13dp"
