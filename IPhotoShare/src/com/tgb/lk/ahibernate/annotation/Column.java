@@ -17,4 +17,5 @@ public @interface Column {
 	public abstract String type() default "";
 
 	public abstract int length() default 0;
+
 }

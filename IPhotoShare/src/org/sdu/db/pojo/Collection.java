@@ -34,5 +34,6 @@ public  class Collection implements java.io.Serializable {
 	public void setPhotoId(Integer photoId) {
 		this.photoId = photoId;
 	}
+	
 
 }
