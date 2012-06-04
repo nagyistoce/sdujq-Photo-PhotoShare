@@ -1,5 +1,6 @@
 package org.sdu.db.pojo;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 
 import com.tgb.lk.ahibernate.annotation.Column;

@@ -1,17 +1,22 @@
 package org.sdu.bmputil;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.Log;
 
 public class BitmapTool {
-	/*public static Bitmap Bytes2Bimap(byte[] b) {
+
+	public static Bitmap Bytes2Bimap(byte[] b) {
+		Log.e("qq", "byte length is"+b.length);
 		if (b.length != 0) {
 			return BitmapFactory.decodeByteArray(b, 0, b.length);
-		}
-		else {
+		} else {
 			return null;
 
 		}
@@ -22,37 +27,32 @@ public class BitmapTool {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-		bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
+		bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
 		try {
 			baos.flush();
-			baos.close();
 		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return baos.toByteArray();
-
-	}*/
-	public static Bitmap Bytes2Bimap(byte[] b) {
-		try {
-			return ((BitmapObj)Trans.getObjectFromBytes(b)).getBmp();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public static byte[] Bitmap2Bytes(Bitmap bm) {
-		BitmapObj bo=new BitmapObj();
-		bo.setBmp(bm);
-		try {
-			return Trans.getBytesFromObject(bo);
-		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		byte[] b=baos.toByteArray();
+		Log.e("qq", "byte length is"+b.length);
+
+		return b;
+
 	}
+
+	/*
+	 * public static Bitmap Bytes2Bimap(byte[] b) { try { return ((BitmapObj)
+	 * Trans.getObjectFromBytes(b)).getBmp(); } catch (Exception e) {
+	 * e.printStackTrace(); } return null; }
+	 * 
+	 * public static byte[] Bitmap2Bytes(Bitmap bm) { BitmapObj bo = new
+	 * BitmapObj(); bo.setBmp(bm); try { return Trans.getBytesFromObject(bo); }
+	 * catch (Exception e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } return null; }
+	 */
+
 	/**
 	 * �ϳ�ˮӡͼƬ
 	 * 

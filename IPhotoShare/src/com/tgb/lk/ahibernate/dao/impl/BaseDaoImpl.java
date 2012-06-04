@@ -320,7 +320,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 					&& (field.isAnnotationPresent(Id.class))) {
 				continue;
 			}
-			cv.put(column.name(), fieldValue.toString());
+			//TODO changed by sdujq
+			if(fieldValue instanceof byte[]){
+				cv.put(column.name(), (byte[])fieldValue);
+			}
+			else {
+				cv.put(column.name(), fieldValue.toString());}
+			
 		}
 	}
 

@@ -59,7 +59,7 @@ public class Upload  extends Activity{
 			@Override
 			public void onClick(View v) {
 				UserAction uation=new UserAction(Upload.this);
-				uation.savePhoto(bmp, title.getText().toString(),info.getText().toString());
+				uation.savePhoto(BitmapFactory.decodeFile("/mnt/sdcard/temp100.jpg"), title.getText().toString(),info.getText().toString());
 				Toast.makeText(Upload.this, "上传成功",Toast.LENGTH_SHORT).show();
 				Intent intent =new Intent();
 				intent.setClass(Upload.this, Home.class);
