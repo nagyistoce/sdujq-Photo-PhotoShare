@@ -9,7 +9,7 @@ public class PhotoDBActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        //setContentView(R.layout.main);
 		DBHelper dbh=new DBHelper(this);
         SQLiteDatabase db=dbh.getWritableDatabase();
         db.close();

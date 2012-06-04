@@ -61,7 +61,7 @@ public interface IUserAction {
 	 * 保存图片
 	 * @param bmp 要保存的Bitmap对象
 	 */
-	void savePhoto(Bitmap bmp,String title);
+	void savePhoto(Bitmap bmp,String title,String detail);
 	/**
 	 * 加关注
 	 * @param uid 目标关注人

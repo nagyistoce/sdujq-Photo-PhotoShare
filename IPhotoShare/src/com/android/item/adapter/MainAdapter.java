@@ -1,6 +1,14 @@
 package com.android.item.adapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.sdu.bmputil.BitmapTool;
+import org.sdu.db.pojo.Photo;
+import org.sdu.taskImp.UserAction;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -12,15 +20,22 @@ import com.android.main.R;
 
 public class MainAdapter extends BaseAdapter {
 	private Context mContext;
-
+	private List<Photo> plist;
+	UserAction uaction;
 	public MainAdapter(Context c) {
 		mContext = c;
+		uaction=new UserAction(c);
+		List<Integer> ids=uaction.getHotPhotoIdList(50);
+		plist=new ArrayList<Photo>();
+		for(int i:ids){
+			plist.add(uaction.getPhotoById(i));
+		}
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return TestData.images.length;
+		return plist.size();
 	}
 
 	@Override
@@ -49,10 +64,12 @@ public class MainAdapter extends BaseAdapter {
 		//imageview.setScaleType(ImageView.ScaleType.CENTER_CROP);
 		//imageview.setPadding(10, 10, 10, 10);
 		TextView love = (TextView)view.findViewById(R.id.grid_text1);
-		love.setText(TestData.text[position]); 
+		love.setText(""+plist.get(position).getViewNum()); 
 		TextView com = (TextView)view.findViewById(R.id.grid_text2);
 		com.setText(TestData.text[position]); 
-		imageview.setBackgroundResource(TestData.images[position]);
+		Bitmap bmp=uaction.getBitmap(plist.get(position));
+		imageview.setImageBitmap(bmp);
+		view.setTag(plist.get(position).getId());
 		return view;
 	}
 

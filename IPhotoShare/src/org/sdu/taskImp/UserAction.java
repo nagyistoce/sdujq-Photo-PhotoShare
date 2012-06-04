@@ -101,7 +101,7 @@ public class UserAction implements IUserAction {
 	public List<Integer> getHotPhotoIdList(int num) {
 		PhotoDao pdao = new PhotoDao(context);
 		List<Map<String, String>> data = pdao.query2MapList(
-				"select id from Photo order by viewNum desc limit ?",
+				"select id from t_photo order by viewNum desc limit ?",
 				new String[] { "" + num });
 		List<Integer> res = new ArrayList<Integer>();
 		for (Map<String, String> m : data) {
@@ -114,7 +114,7 @@ public class UserAction implements IUserAction {
 		new DynamicDao(context).insert(dynamic);
 	}
 
-	public void savePhoto(Bitmap bmp, String title) {
+	public void savePhoto(Bitmap bmp, String title,String detail) {
 		Photo p = new Photo();
 		p.setData(BitmapTool.Bitmap2Bytes(bmp));
 		// TODO loaction
@@ -123,6 +123,7 @@ public class UserAction implements IUserAction {
 		p.setTitle(title);
 		p.setUserId(getCurrentUser().getId());
 		p.setViewNum(0);
+		p.setTag(detail);
 		Long pid = new PhotoDao(context).insert(p);
 		Dynamic dynamic = new Dynamic();
 		dynamic.setPhotoId(pid.intValue());
@@ -188,7 +189,7 @@ public class UserAction implements IUserAction {
 
 	public List<Collection> getCollectionList() {
 		CollectionDao cdao = new CollectionDao(context);
-		return cdao.rawQuery("select * from collection where userId=?",
+		return cdao.rawQuery("select * from t_collection where userId=?",
 				new String[] { getCurrentUser().getId() + "" });
 	}
 

@@ -208,7 +208,9 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 						field.set(entity, Double.valueOf(cursor.getDouble(c)));
 					} else if (Blob.class == fieldType) {
 						field.set(entity, cursor.getBlob(c));
-					} else if (Character.TYPE == fieldType) {
+					} else if(byte[].class==fieldType){
+						field.set(entity, cursor.getBlob(c));
+					}else if (Character.TYPE == fieldType) {
 						String fieldValue = cursor.getString(c);
 
 						if ((fieldValue != null) && (fieldValue.length() > 0)) {

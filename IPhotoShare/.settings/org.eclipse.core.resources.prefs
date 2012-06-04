@@ -1,3 +1,13 @@
-#Wed May 16 17:43:00 CST 2012
+#Fri Jun 01 10:19:15 CST 2012
 eclipse.preferences.version=1
+encoding//src/com/tgb/lk/ahibernate/annotation=GBK
+encoding//src/com/tgb/lk/ahibernate/dao=GBK
+encoding//src/com/tgb/lk/ahibernate/dao/impl=GBK
+encoding//src/com/tgb/lk/ahibernate/util=GBK
+encoding//src/org/sdu/bmputil=GBK
+encoding//src/org/sdu/db=GBK
+encoding//src/org/sdu/db/dao=GBK
+encoding//src/org/sdu/db/pojo=GBK
+encoding//src/org/sdu/task=GBK
+encoding//src/org/sdu/taskImp=GBK
 encoding/<project>=UTF-8

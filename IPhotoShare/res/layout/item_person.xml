@@ -10,8 +10,7 @@
     android:layout_height="100dp"
     android:layout_margin="20dp"
     android:background="@drawable/myphoto"/> 
-   <ImageView
-    android:id="@+id/myname"
+   <ImageView android:id="@+id/myname"
     android:layout_toRightOf="@id/myphoto"
     android:layout_width="fill_parent"
     android:layout_height="40dp"
