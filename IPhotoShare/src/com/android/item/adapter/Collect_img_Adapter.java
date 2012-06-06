@@ -1,5 +1,10 @@
 package com.android.item.adapter;
 
+import java.util.List;
+
+import org.sdu.db.pojo.Photo;
+import org.sdu.taskImp.UserAction;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +24,18 @@ import com.android.main.R;
 public class Collect_img_Adapter extends BaseAdapter {
 
 	private Context mContext;
-
-	public Collect_img_Adapter(Context c) {
+	private List<Photo> data;
+	UserAction ua;
+	public Collect_img_Adapter(Context c,List<Photo> ls) {
 		mContext = c;
+		ua=new UserAction(mContext);
+		data=ls;
 	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return TestData.images.length;
+		return data.size();
 	}
 
 	@Override
@@ -48,10 +56,9 @@ public class Collect_img_Adapter extends BaseAdapter {
 
 		View view = View.inflate(mContext, R.layout.my_collect_img_item, null);
 		ImageView imageview = (ImageView) view.findViewById(R.id.co_img);
-		imageview.setBackgroundResource(TestData.images[position]);
-
+		imageview.setImageBitmap(ua.getBitmap(data.get(position)));
 		TextView title = (TextView) view.findViewById(R.id.co_title);
-		title.setText(TestData.text[position]);
+		title.setText(data.get(position).getTitle());
 
 		return view;
 	}

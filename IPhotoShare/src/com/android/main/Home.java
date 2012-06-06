@@ -28,6 +28,7 @@ import com.android.item.Main_item;
 import com.android.item.Map;
 import com.android.item.Person;
 import com.android.item.Photo;
+import com.google.android.maps.MapActivity;
 
 /**
  * 进入应用主界面
@@ -35,7 +36,7 @@ import com.android.item.Photo;
  * @author ls
  * 
  */
-public class Home extends Activity {
+public class Home extends MapActivity {
 	private Button attention;
 	private Button home;
 	private Button collect;
@@ -305,6 +306,12 @@ public class Home extends Activity {
 				Home.this.startActivity(intent);
 			}
 		}
+	}
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

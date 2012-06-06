@@ -16,7 +16,7 @@ public  class Argument implements java.io.Serializable {
 	@Column(name="userId")
 	private Integer userId;
 	@Column(name="time")
-	private Timestamp time;
+	private long time;
 	@Column(name="photoId")
 	private Integer photoId;
 	@Column(name="info")
@@ -33,10 +33,10 @@ public  class Argument implements java.io.Serializable {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public Timestamp getTime() {
+	public long getTime() {
 		return time;
 	}
-	public void setTime(Timestamp time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 	public Integer getPhotoId() {

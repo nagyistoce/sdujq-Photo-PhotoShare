@@ -91,7 +91,7 @@ public class UserAction implements IUserAction {
 		List<Integer> res = new ArrayList<Integer>();
 		for (int i = data.size() - 1; i > -1; i--) {
 			Dynamic curr = data.get(i);
-			if (friend.contains(curr.getUserId())) {
+			if (friend.contains(curr.getUserId())||u.getId()==curr.getUserId()) {
 				res.add(curr.getId());
 			}
 		}
@@ -118,7 +118,7 @@ public class UserAction implements IUserAction {
 		Photo p = new Photo();
 		p.setData(BitmapTool.Bitmap2Bytes(bmp));
 		// TODO loaction
-		Timestamp time = new Timestamp(new Date().getTime());
+		long time=new Date().getTime();
 		p.setTime(time);
 		p.setTitle(title);
 		p.setUserId(getCurrentUser().getId());
@@ -147,7 +147,12 @@ public class UserAction implements IUserAction {
 		c.setUserId(getCurrentUser().getId());
 		CollectionDao cdao = new CollectionDao(context);
 		cdao.insert(c);
-		Timestamp time = new Timestamp(new Date().getTime());
+		PhotoDao pdao=new PhotoDao(context);
+		Photo p=pdao.get(photoId);
+		int num=(p.getViewNum()==null?0:p.getViewNum())+1;
+		p.setViewNum(num);
+		pdao.update(p);
+		long time = new Date().getTime();
 
 		Dynamic dynamic = new Dynamic();
 		dynamic.setPhotoId(photoId);
@@ -159,11 +164,10 @@ public class UserAction implements IUserAction {
 	}
 
 	public void makeArgument(int pid, String words) {
-		Timestamp time = new Timestamp(new Date().getTime());
 		Argument arg = new Argument();
 		arg.setInfo(words);
 		arg.setPhotoId(pid);
-		arg.setTime(time);
+		arg.setTime(new Date().getTime());
 		arg.setUserId(getCurrentUser().getId());
 		new ArgumentDao(context).insert(arg);
 	}
@@ -180,10 +184,10 @@ public class UserAction implements IUserAction {
 		return BitmapTool.Bytes2Bimap(p.getData());
 	}
 
-	public List<Argument> getArgumentList(int id) {
+	public List<Argument> getArgumentList(int photoid) {
 		ArgumentDao adao = new ArgumentDao(context);
 		return adao.find(new String[] { "id", "userId", "time", "photoId",
-				"info" }, "id=?", new String[] { id + "" }, null, null, null,
+				"info" }, "photoId=?", new String[] { photoid + "" }, null, null, null,
 				null);
 	}
 
@@ -191,6 +195,11 @@ public class UserAction implements IUserAction {
 		CollectionDao cdao = new CollectionDao(context);
 		return cdao.rawQuery("select * from t_collection where userId=?",
 				new String[] { getCurrentUser().getId() + "" });
+	}
+	
+	public List<Photo> getAllPhoto(User u){
+		PhotoDao pdao=new PhotoDao(context);
+		return pdao.rawQuery("select * from t_photo where userId=?", new String[] { u.getId() + "" });
 	}
 
 }

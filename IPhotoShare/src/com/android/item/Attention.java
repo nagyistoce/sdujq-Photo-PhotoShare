@@ -28,6 +28,7 @@ public class Attention extends Activity{
 				intent.setClass(Attention.this, Picture.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("select", position);
+				bundle.putInt("id", ((Integer)view.getTag()).intValue());
 				intent.putExtras(bundle);
 				Attention.this.startActivity(intent);      
 			}

@@ -1,13 +1,19 @@
 package com.android.item.activity;
 
+import java.util.List;
+
+import org.sdu.db.pojo.Photo;
+import org.sdu.taskImp.UserAction;
+
 import android.app.Activity;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -31,14 +37,17 @@ public class Collect_img extends Activity implements ViewFactory,
 
 	private ImageSwitcher is;
 	private Gallery g;
-
+	UserAction ua;
+	List<Photo> data;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.my_collect_img);
 		g = (Gallery) findViewById(R.id.co_gallery);
-		g.setAdapter(new Collect_img_Adapter(this));
+		ua=new UserAction(this);
+		data=ua.getAllPhoto(ua.getCurrentUser());
+		g.setAdapter(new Collect_img_Adapter(this,data));
 		g.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -47,7 +56,7 @@ public class Collect_img extends Activity implements ViewFactory,
 				Toast.makeText(Collect_img.this, "当前第" + (position + 1) + "张",
 						Toast.LENGTH_SHORT).show();
 				//设置ImageSwitcher和Gallery显示的图片
-				is.setImageResource(TestData.images[position]);
+				is.setImageDrawable(new BitmapDrawable(ua.getBitmap(data.get(position))));
 				g.setSelection(position-1, true);
 			}
 		});
@@ -69,7 +78,7 @@ public class Collect_img extends Activity implements ViewFactory,
 		Bundle bundle = this.getIntent().getExtras();
 		selected = bundle.getInt("select");
 		//设置ImageSwitcher和Gallery显示的图片
-		is.setImageResource(TestData.images[selected]);
+		is.setImageDrawable(new BitmapDrawable(ua.getBitmap(data.get(selected))));
 		g.setSelection(selected, true);
 		
 		//返回按钮
@@ -118,7 +127,7 @@ public class Collect_img extends Activity implements ViewFactory,
 
 				// int position, boolean animate
 				g.setSelection(selected, true);
-				is.setImageResource(TestData.images[selected]);
+				is.setImageDrawable(new BitmapDrawable(ua.getBitmap(data.get(selected)))); 
 				Toast.makeText(Collect_img.this, "当前第" + (selected + 1) + "张",
 						Toast.LENGTH_SHORT).show();
 				return true;

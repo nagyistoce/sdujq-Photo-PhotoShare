@@ -30,7 +30,7 @@ public class Dynamic implements java.io.Serializable {
 	private String tag;
 	
 	@Column(name = "time")
-	private Timestamp time;
+	private long time;
 
 	public Integer getId() {
 		return id;
@@ -80,11 +80,11 @@ public class Dynamic implements java.io.Serializable {
 		this.tag = tag;
 	}
 
-	public Timestamp getTime() {
+	public long getTime() {
 		return time;
 	}
 
-	public void setTime(Timestamp time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 

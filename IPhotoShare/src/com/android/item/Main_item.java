@@ -13,13 +13,13 @@ import com.android.item.adapter.MainAdapter;
 import com.android.main.R;
 
 public class Main_item extends Activity{
-
+	GridView gridview;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_home);
-		GridView gridview=(GridView)findViewById(R.id.gridview);//找到main.xml中定义gridview 的id      
-		gridview.setAdapter(new MainAdapter(this));//调用ImageAdapter.java   
+		gridview=(GridView)findViewById(R.id.gridview);//找到main.xml中定义gridview 的id      
+		gridview.setAdapter(new MainAdapter(this));//调用ImageAdapter.java  
 		gridview.setOnItemClickListener(new OnItemClickListener(){//监听事件    
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)   
 			{       
@@ -35,5 +35,10 @@ public class Main_item extends Activity{
 		});  
 		
 	}
+	@Override
+	public void onAttachedToWindow(){
+		gridview.setAdapter(new MainAdapter(this));
+	}
+
 
 }

@@ -83,7 +83,7 @@ public interface IUserAction {
 	
 	Bitmap getBitmap(Photo p);
 	
-	List<Argument> getArgumentList(int id);
+	List<Argument> getArgumentList(int photoId);
 	
 	List<Collection> getCollectionList();
 }

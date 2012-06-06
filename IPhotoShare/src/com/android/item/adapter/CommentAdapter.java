@@ -1,5 +1,13 @@
 package com.android.item.adapter;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.sdu.db.dao.UserDao;
+import org.sdu.db.pojo.Argument;
+import org.sdu.taskImp.UserAction;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,27 +18,28 @@ import com.android.item.activity.TestData;
 import com.android.main.R;
 
 public class CommentAdapter extends BaseAdapter{
-
+	List<Argument> data=new ArrayList<Argument>();
 	private Context mContext;
-	public CommentAdapter(Context c) {
+	UserAction uaction;
+	public CommentAdapter(Context c,int id) {
 		mContext = c;
+		uaction=new UserAction(c);
+		data=uaction.getArgumentList(id);
 	}
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return TestData.comments.length;
+		return data.size();
 	}
 
 	@Override
 	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
+		return data.get(arg0);
 	}
 
 	@Override
 	public long getItemId(int arg0) {
 		// TODO Auto-generated method stub
-		return 0;
+		return arg0;
 	}
 	
 
@@ -40,16 +49,16 @@ public class CommentAdapter extends BaseAdapter{
 
 		
 		View view = View.inflate(mContext, R.layout.comment_item, null);
-		
-		
+		Argument item=data.get(position);
+		UserDao udao=new UserDao(mContext);
 		TextView username = (TextView)view.findViewById(R.id.comment_user);
-		username.setText(TestData.name[position]); 
+		username.setText(udao.get(item.getUserId()).getName()); 
 		
 		TextView time = (TextView)view.findViewById(R.id.comment_time);
-		time.setText(TestData.times[position]);
+		time.setText(new Timestamp(item.getTime()).toLocaleString());
 		
 		TextView comment = (TextView)view.findViewById(R.id.comments);
-		comment.setText(TestData.comments[position]);
+		comment.setText(item.getInfo());
 		return view;
 	}
 	

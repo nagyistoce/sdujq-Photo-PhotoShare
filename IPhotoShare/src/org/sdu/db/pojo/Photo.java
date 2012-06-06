@@ -20,7 +20,7 @@ public  class Photo implements java.io.Serializable {
 	@Column(name="title")
 	private String title;
 	@Column(name="time")
-	private Timestamp time;
+	private long time;
 	@Column(name="tag")
 	private String tag;
 	@Column(name="location")
@@ -52,10 +52,10 @@ public  class Photo implements java.io.Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Timestamp getTime() {
+	public long getTime() {
 		return time;
 	}
-	public void setTime(Timestamp time) {
+	public void setTime(long time) {
 		this.time = time;
 	}
 	public String getTag() {
