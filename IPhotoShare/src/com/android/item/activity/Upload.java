@@ -5,10 +5,13 @@ import java.io.File;
 import org.sdu.taskImp.UserAction;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -22,6 +25,9 @@ import android.widget.Toast;
 
 import com.android.main.Home;
 import com.android.main.R;
+import com.maxtech.common.gps.AddressTask;
+import com.maxtech.common.gps.GpsTask.GpsData;
+import com.maxtech.common.gps.IAddressTask.MLocation;
 import com.renren.api.connect.android.Renren;
 import com.tencent.weibo.api.TAPI;
 import com.tencent.weibo.api.UserAPI;
@@ -109,9 +115,119 @@ public class Upload  extends Activity{
 			}
 		});
 	}
+
+	AlertDialog dialog;
+	private void do_apn() {
+		new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected String doInBackground(Void... params) {
+				MLocation location = null;
+				try {
+					location = new AddressTask(Upload.this,
+							AddressTask.DO_APN).doApnPost();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(location == null)
+					return null;
+				return location.toString();
+			}
+
+			@Override
+			protected void onPreExecute() {
+				dialog.show();
+				super.onPreExecute();
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				if(result == null){
+					//TODO gps_tip.setText("基站定位失败了...");					
+				}else {
+					//TODO gps_tip.setText(result);
+				}
+				dialog.dismiss();
+				super.onPostExecute(result);
+			}
+			
+		}.execute();
+	}
+
+	private void do_gps(final GpsData gpsdata) {
+		new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected String doInBackground(Void... params) {
+				MLocation location = null;
+				try {
+					Log.i("do_gpspost", "经纬度：" + gpsdata.getLatitude() + "----" + gpsdata.getLongitude());
+					location = new AddressTask(Upload.this,
+							AddressTask.DO_GPS).doGpsPost(gpsdata.getLatitude(),
+									gpsdata.getLongitude());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(location == null)
+					return "GPS信息获取错误";
+				return location.toString();
+			}
+
+			@Override
+			protected void onPreExecute() {
+				dialog.show();
+				super.onPreExecute();
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				//TODO gps_tip.setText(result);
+				dialog.dismiss();
+				super.onPostExecute(result);
+			}
+			
+		}.execute();
+	}
+
+	private void do_wifi() {
+		new AsyncTask<Void, Void, String>() {
+
+			@Override
+			protected String doInBackground(Void... params) {
+				MLocation location = null;
+				try {
+					location = new AddressTask(Upload.this,
+							AddressTask.DO_WIFI).doWifiPost();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if(location == null)
+					return null;
+				return location.toString();
+			}
+
+			@Override
+			protected void onPreExecute() {
+				dialog.show();
+				super.onPreExecute();
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				if(result != null){
+					//TODO	gps_tip.setText(result);
+				}else {
+					//TODO	gps_tip.setText("WIFI定位失败了...");
+				}
+				
+				dialog.dismiss();
+				super.onPostExecute(result);
+			}
+			
+		}.execute();
+	}
 	
-	
-//===============================忽略以下认证代码==========================================//	
+//===============================以下为认证代码==========================================//	
 	
 
 	Weibo sina;
