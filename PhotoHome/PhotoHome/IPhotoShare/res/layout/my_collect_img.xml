@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#FFFFFF">
+  <ImageView
+    android:id="@+id/co_upbg"
+    android:layout_width="fill_parent" 
+    android:layout_height="60dp" 
+    android:background="@drawable/bg1"
+    />
+    <Button
+    android:id="@+id/co_img_back"
+    android:layout_width="50dp"
+    android:layout_height="40dp"
+    android:layout_alignParentTop="true"
+    android:layout_margin="8dp"
+    android:background="@drawable/back"
+    />
+    <Button
+    android:id="@+id/co_title0"
+    android:layout_width="63dp"
+    android:layout_height="50dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_margin="8dp"
+    android:background="@drawable/title_collect"
+    
+    />
+	<ImageView
+    android:id="@+id/co_downbg"
+    android:layout_width="fill_parent" 
+    android:layout_height="60dp" 
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/bg2"
+    /> 
+    <Gallery android:id="@+id/co_gallery" 
+	     android:layout_width="fill_parent"  
+        android:layout_height="110dp" 
+        android:background="@drawable/gallerybg"  
+        android:layout_above="@id/co_downbg"
+        android:gravity="center_vertical"  
+        android:spacing="16dp" 
+       /> 
+    <ImageSwitcher
+        android:id="@+id/co_imageSwitcher"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="30dp"
+        android:layout_below="@id/co_upbg"
+        android:layout_above="@id/co_gallery"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF">
+    </ImageSwitcher>
+    <ImageView
+    android:id="@+id/co_last"
+    android:layout_width="30dp" 
+    android:layout_height="40dp" 
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:background="@drawable/last"
+    /> 
+    <ImageView
+    android:id="@+id/co_next"
+    android:layout_width="30dp" 
+    android:layout_height="40dp" 
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:paddingRight="10dp"
+    android:background="@drawable/next"
+    /> 
+	  
+</RelativeLayout>

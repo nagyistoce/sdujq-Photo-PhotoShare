@@ -58,8 +58,8 @@ public class AttentionAdapter extends BaseAdapter{
 		ImageView user_head = (ImageView) view.findViewById(R.id.list_user);
 		ImageView img = (ImageView) view.findViewById(R.id.list_image);
 		user_head.setImageResource(TestData.user_head_img[(int)(TestData.user_head_img.length*Math.random())]);
-
-		img.setImageBitmap((BitmapTool.Bytes2Bimap(p.getData())));
+		UserAction ua=new UserAction(mContext);
+		img.setImageBitmap(ua.getBitmap(p));
 		
 		TextView username = (TextView)view.findViewById(R.id.list_username);
 		username.setText(new UserDao(mContext).get(item.getUserId()).getName()); 

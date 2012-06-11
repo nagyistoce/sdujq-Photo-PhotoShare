@@ -21,9 +21,10 @@ import com.android.main.R;
 public class CollectionAdapter extends BaseAdapter {
 	private Context mContext;
 	public List<Collection> data;
+	UserAction ua;
 	public CollectionAdapter(Context c) {
 		mContext = c;
-		UserAction ua=new UserAction(mContext);
+		ua=new UserAction(mContext);
 		data=ua.getCollectionList();
 	}
 
@@ -51,7 +52,7 @@ public class CollectionAdapter extends BaseAdapter {
 		Photo p=new PhotoDao(mContext).get(data.get(position).getPhotoId());
 		View view = View.inflate(mContext, R.layout.my_collect_item, null);
 		ImageView imageview = (ImageView) view.findViewById(R.id.albumimg);
-		imageview.setImageBitmap(BitmapTool.Bytes2Bimap(p.getData()));		
+		imageview.setImageBitmap(ua.getBitmap(p));		
 		TextView title = (TextView)view.findViewById(R.id.albumtitle);
 		title.setText(p.getTitle()); 
 		 

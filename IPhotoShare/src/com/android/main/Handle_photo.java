@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import org.sdu.bmputil.BitmapTool;
+import org.sdu.bmputil.PhotoDrawerTemp;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -67,7 +70,6 @@ public class Handle_photo extends Activity {
 		spin.setOnClickListener(new buttonListener());
 		cut.setOnClickListener(new buttonListener());
 		scrawl.setOnClickListener(new buttonListener());
-
 //		LoadImageFilter();
 	}
 
@@ -87,17 +89,28 @@ public class Handle_photo extends Activity {
 
 			} else if (v.getId() == scrawl.getId()) {
 				sub_filter.setVisibility(View.GONE);
+				PhotoDrawerTemp.shareBMP=bitmap;
+				Intent intent =new Intent();
+				intent.setClass(Handle_photo.this, PhotoDrawerTemp.class);
+				startActivityForResult(intent, 123);
 			}
 			else if (v.getId() == ok.getId()) {
 				Intent intent =new Intent();
 				intent.setClass(Handle_photo.this, Upload.class);
-//				Bundle bundle = new Bundle();
-//				bundle.putInt("select", position);
-//				intent.putExtras(bundle);
+				
+				/*Bundle bundle = new Bundle();
+				bundle.putByteArray("data", BitmapTool.Bitmap2Bytes(bitmap));
+				intent.putExtras(bundle);*/
 				Handle_photo.this.startActivity(intent); 
 				Handle_photo.this.finish();
+				
 			}
 		}
 	}
 
+	public void onActivityResult(int requestCode, int resultCode, Intent it){
+		
+			imageView.setImageBitmap(PhotoDrawerTemp.shareBMP);
+		
+	}
 }

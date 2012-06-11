@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/bg_2">
+  <ImageView
+    android:id="@+id/pic_upbg"
+    android:layout_width="fill_parent" 
+    android:layout_height="60dp" 
+    android:background="@drawable/bg1_2"
+    />
+    <Button
+    android:id="@+id/pic_back"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:layout_alignParentTop="true"
+    android:layout_margin="15dp"
+    android:background="@drawable/back_2"
+    />
+    <Button
+    android:id="@+id/pic_title"
+    android:layout_width="wrap_content"
+    android:layout_height="30dp"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_margin="15dp"
+    android:background="@drawable/title_pic_2"
+    
+    />
+    <ScrollView 
+    android:id="@+id/scroll"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/pic_upbg"
+    android:measureAllChildren="true"
+    >
+ 	<LinearLayout 
+ 	xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:layout_width="fill_parent"
+ 	android:layout_height="wrap_content"
+ 	android:orientation="vertical"
+ 	android:padding="10dp"
+ 	>
+	 	<RelativeLayout 
+	 	xmlns:android="http://schemas.android.com/apk/res/android"
+	 	android:layout_width="fill_parent"
+	 	android:layout_height="wrap_content"
+	 	android:orientation="horizontal"
+	 	>
+	 		<ImageView
+		    android:id="@+id/pic_user"
+		    android:layout_width="80dp" 
+		    android:layout_height="80dp" 
+		    />
+		    <LinearLayout 
+		 	xmlns:android="http://schemas.android.com/apk/res/android"
+		 	android:layout_width="wrap_content"
+		 	android:layout_height="wrap_content"
+		 	android:orientation="vertical"
+		 	android:layout_toRightOf="@id/pic_user"
+		 	android:paddingLeft="5dp"
+		 	>
+		 	<TextView 
+		 	android:id="@+id/pic_username" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textSize="14sp"
+			android:textColor="@color/black"
+			/>
+			<TextView 
+		 	android:id="@+id/pic_titles" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textSize="14sp"
+			android:textColor="@color/black"
+			/>
+			<TextView 
+		 	android:id="@+id/pic_time" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textSize="14sp"
+			android:textColor="@color/black"
+			/>
+		 	</LinearLayout>
+		 	<Button
+		    android:id="@+id/pic_add"
+		    android:layout_width="wrap_content"
+		    android:layout_height="20dp"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignBottom="@id/pic_user"
+		    android:layout_margin="10dp"
+		    android:background="@drawable/add_att"
+		    
+		    />
+	 	</RelativeLayout>
+ 	
+	 	<ImageView
+	    android:id="@+id/pic"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:paddingTop="10dp"
+	    android:paddingBottom="10dp" 
+	    />
+ 		<RelativeLayout 
+	 	xmlns:android="http://schemas.android.com/apk/res/android"
+	 	android:layout_width="fill_parent"
+	 	android:layout_height="wrap_content"
+	 	android:orientation="horizontal"
+	 	>
+	 		<TextView 
+		 	android:id="@+id/pic_comment_text" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textSize="20sp"
+			android:text="评论："
+			android:textColor="@color/white"
+			android:paddingLeft="10dp"
+			/>
+			<Button
+		    android:id="@+id/pic_comment"
+		    android:layout_width="25dp"
+		    android:layout_height="25dp"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginRight="10dp"
+		    android:background="@drawable/comment"
+		    
+		    />
+			<Button
+		    android:id="@+id/pic_collect"
+		    android:layout_width="25dp"
+		    android:layout_height="25dp"
+		    android:layout_toLeftOf="@id/pic_comment"
+		    android:layout_marginRight="10dp"
+		    android:background="@drawable/love"
+		    
+		    />
+		    
+	 	</RelativeLayout>
+	 	<ImageView
+	    android:id="@+id/pic_line"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:src="@drawable/line_2"
+	    />
+	    <ListView 
+	    android:id="@+id/comment_list" 
+	    android:layout_width="fill_parent"   
+	    android:layout_height="500dp" 
+	    style="@style/CustomListViewStyle2"
+
+     
+          />
+	 	
+ 	</LinearLayout>
+ 	</ScrollView>
+ 
+    
+    
+</RelativeLayout>

@@ -1,10 +1,10 @@
 package org.sdu.taskImp;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import org.sdu.bmputil.BitmapTool;
 import org.sdu.db.dao.ArgumentDao;
@@ -28,7 +28,7 @@ public class UserAction implements IUserAction {
 	public static final int NEWPHOTO = 0;
 	public static final int SHARE = 1;
 	public static final int ARGUMENT = 2;
-
+	public static WeakHashMap<Integer, Bitmap> cache=new WeakHashMap<Integer, Bitmap>();
 	// public static final int MAKEFRIEND=3;
 	private Context context;
 
@@ -147,6 +147,7 @@ public class UserAction implements IUserAction {
 		c.setUserId(getCurrentUser().getId());
 		CollectionDao cdao = new CollectionDao(context);
 		cdao.insert(c);
+		
 		PhotoDao pdao=new PhotoDao(context);
 		Photo p=pdao.get(photoId);
 		int num=(p.getViewNum()==null?0:p.getViewNum())+1;
@@ -177,11 +178,17 @@ public class UserAction implements IUserAction {
 	}
 
 	public Bitmap getBitmap(Photo p) {
-		if (p.getData() != null) {
-			return BitmapTool.Bytes2Bimap(p.getData());
+		if(cache.get(p.getId())!=null){
+			return cache.get(p.getId());
 		}
-		p = new PhotoDao(context).get(p.getId());
-		return BitmapTool.Bytes2Bimap(p.getData());
+		if (p.getData() != null) {
+			Bitmap bmp=BitmapTool.Bytes2Bimap(p.getData());
+			cache.put(p.getId(), bmp);
+			return bmp;
+		}
+		Bitmap bmp=BitmapTool.Bytes2Bimap(p.getData());
+		cache.put(p.getId(), bmp);
+		return bmp;
 	}
 
 	public List<Argument> getArgumentList(int photoid) {
@@ -200,6 +207,18 @@ public class UserAction implements IUserAction {
 	public List<Photo> getAllPhoto(User u){
 		PhotoDao pdao=new PhotoDao(context);
 		return pdao.rawQuery("select * from t_photo where userId=?", new String[] { u.getId() + "" });
+	}
+
+	//TODO deal
+	@Override
+	public List<Photo> getPhotoByLocation(long x, long y) {
+		List<Photo> res=new ArrayList<Photo>();
+		res=getAllPhoto(getCurrentUser());
+		for(Photo test:res){
+		test.setLocationX(""+(int)(36.666759 * 1000000+Math.random()*10000-5000));
+		test.setLocationY(""+(int)(117.132937 * 1000000+Math.random()*10000-5000));
+		}
+		return res;
 	}
 
 }

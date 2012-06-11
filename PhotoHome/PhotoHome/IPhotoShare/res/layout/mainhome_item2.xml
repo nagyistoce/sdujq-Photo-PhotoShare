@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout  
+  xmlns:android="http://schemas.android.com/apk/res/android"  
+  android:orientation="vertical"  
+  android:layout_width="100dp"  
+  android:layout_height="100dp" android:gravity="center"
+  android:background="@drawable/gridbg_2"
+  android:paddingTop="5dp">  
+    
+  
+   <ImageView  
+	android:id="@+id/grid_image"  
+	android:layout_width="75dp"   
+	android:layout_height="75dp"/>  
+ 
+   
+   <LinearLayout 
+   android:layout_width="fill_parent"  
+  android:layout_height="20dp" 
+  android:orientation="horizontal" 
+  android:gravity="right"
+  android:paddingRight="5dp" 
+  > 
+   <ImageView  
+	android:id="@+id/grid_love"  
+	android:layout_width="15dp"   
+	android:layout_height="15dp"
+	android:src="@drawable/gridlove"/>  
+    
+	<TextView 
+	android:layout_width="wrap_content" 
+	android:id="@+id/grid_text1"   
+	android:layout_height="wrap_content" 
+	android:textColor="@color/black"
+	android:gravity="center"/>
+  
+   <ImageView  
+	android:id="@+id/grid_com"  
+	android:layout_width="15dp"   
+	android:layout_height="15dp"
+	android:src="@drawable/gridcom"/>  
+    
+	<TextView 
+	android:layout_width="wrap_content" 
+	android:id="@+id/grid_text2"   
+	android:layout_height="wrap_content"
+	android:textColor="@color/black"
+	 android:gravity="center"/>
+	</LinearLayout>
+</LinearLayout>

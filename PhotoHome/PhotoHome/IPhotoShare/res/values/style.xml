@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <style name="CustomListViewStyle" >
+  <!-- 设置透明背景色 -->
+  <item name="android:cacheColorHint">#00000000</item>
+  <!-- 指定分割线颜色 -->
+  <item name="android:divider">@color/blue</item>
+  <!-- 指定分割线高度 -->
+  <item name="android:dividerHeight">1px</item>
+  <!-- 设置listSelector的颜色在数据的下面 -->
+  <item name="android:drawSelectorOnTop">false</item>
+  <!-- 设置点击选中颜色 -->
+  <item name="android:listSelector">@color/lightblue</item>
+  <!-- 设置ListView默认背景色 -->
+  <item name="android:background">@color/white</item>
+  <!-- 设置ListView距左边距距离 -->
+  <item name="android:paddingLeft">5dip</item>
+  <!-- 设置ListView距右边距距离 -->
+  <item name="android:paddingRight">5dip</item>
+ </style>
+ 
+ <style name="CustomListViewStyle2" >
+  <!-- 设置透明背景色 -->
+  <item name="android:cacheColorHint">#00000000</item>
+  <!-- 指定分割线颜色 -->
+  <item name="android:divider">#00000000</item>
+  <!-- 指定分割线高度 -->
+  <item name="android:dividerHeight">1px</item>
+  <!-- 设置listSelector的颜色在数据的下面 -->
+  <item name="android:drawSelectorOnTop">false</item>
+  <!-- 设置点击选中颜色 -->
+  <item name="android:listSelector">#00000000</item>
+  <!-- 设置ListView默认背景色 -->
+  <item name="android:background">#00000000</item>
+  <!-- 设置ListView距左边距距离 -->
+  <item name="android:paddingLeft">5dip</item>
+  <!-- 设置ListView距右边距距离 -->
+  <item name="android:paddingRight">5dip</item>
+ </style>
+ 
+ <style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+ 
+  <item name="android:button">@layout/checkbox_selector</item>
+ 
+   </style>
+   
+   <style name="MyCheckBox2" parent="@android:style/Widget.CompoundButton.CheckBox">
+ 
+  <item name="android:button">@layout/checkbox_selector2</item>
+ 
+   </style>
+ 
+</resources>
+

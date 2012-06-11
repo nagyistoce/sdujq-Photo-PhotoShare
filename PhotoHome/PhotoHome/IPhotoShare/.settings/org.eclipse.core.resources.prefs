@@ -1,0 +1,12 @@
+#Sat Jun 09 12:43:13 CST 2012
+eclipse.preferences.version=1
+encoding//src/com/android/item=UTF-8
+encoding//src/com/android/item/MapPointItem.java=UTF-8
+encoding//src/com/android/item/MapShowView.java=UTF-8
+encoding//src/com/tgb/lk/ahibernate/annotation=GBK
+encoding//src/com/tgb/lk/ahibernate/dao=GBK
+encoding//src/com/tgb/lk/ahibernate/dao/impl=GBK
+encoding//src/com/tgb/lk/ahibernate/util=GBK
+encoding//src/org/sdu/taskImp=UTF-8
+encoding//src/org/sdu/taskImp/LoginAction.java=GBK
+encoding//src/org/sdu/taskImp/RegAction.java=GBK
